@@ -17,7 +17,7 @@ def create_app() -> FastAPI:
         version=settings.PROJECT_VERSION,
     )
     app_.include_router(products_router)
-    app_.include_router(auth_router)
+    app_.include_router(auth_router, tags=["Auth"])
     app_.include_router(orders_router)
     app_.include_router(users_router)
     return app_

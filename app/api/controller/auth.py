@@ -16,6 +16,7 @@ from app.core.settings import get_settings, Settings
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/token")
 
 
+
 class AuthController:
     def __init__(
             self,

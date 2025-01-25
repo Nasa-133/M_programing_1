@@ -16,10 +16,13 @@ class AuthRepository:
         self.session = session
         self.serializer = serializer
 
+# is_staff: bool = False
+#     is_active: bool = True
+#     is_superuser: bool = False
     async def create_user(self, data: dict) -> None:
         stmt = text(
-            "insert into users(username, password, first_name, last_name, email) "
-            "values (:username, :password, :first_name, :last_name, :email)").bindparams(
+            "insert into users(username, password, first_name, last_name, email, is_active, is_superuser, is_staff) "
+            "values (:username, :password, :first_name, :last_name, :email ,:is_active, :is_superuser, :is_staff )").bindparams(
             **data)
         await self.session.execute(stmt)
         await self.session.commit()
